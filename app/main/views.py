@@ -92,7 +92,7 @@ def blog_update_image(id):
     return redirect(request.referrer or url_for('main.index'))
 
 
-@main.route('/subscribe', methods=["POST"])
+@bp.route('/subscribe', methods=["POST"])
 def subscribe():
     subscribe_form = SubscriberForm()
 
@@ -139,7 +139,7 @@ def delete_blog(id):
 
 
 #delete comment
-@main.route("/comment/<id>/delete", methods=["GET"])
+@bp.route("/comment/<id>/delete", methods=["GET"])
 @login_required
 def delete_comment(id):
     comment = Comment.query.get(id)
