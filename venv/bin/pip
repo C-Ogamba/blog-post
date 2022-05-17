@@ -1,4 +1,4 @@
-#!/home/moringa/Documents/core/python/my-post/app/templates/venv/bin/python3
+#!/home/moringa/Documents/core/python/my-post/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
