@@ -3,7 +3,7 @@ from app import app, db, bcrypt
 from app.models import User, Post
 from flask import render_template, url_for, flash, redirect
 from app.forms import LoginForm, RegistrationForm
-from flask_login import login_user, current_user, logout_user
+from flask_login import login_user, current_user, logout_user, login_required
 
 
 
@@ -48,5 +48,6 @@ def logout():
     return redirect(url_for('index'))
 
 @app.route('/account')
+@login_required
 def account():
      return render_template('account.html', title='Login')

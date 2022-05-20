@@ -18,5 +18,6 @@ migrate = Migrate(app, db)
 moment = Moment(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
+login_manager.login_view = 'login'
 
 from app import routes, models
