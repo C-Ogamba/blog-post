@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_moment import Moment
 from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
 import logging
 from logging.handlers import RotatingFileHandler
 import os
@@ -16,5 +17,6 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 moment = Moment(app)
 bcrypt = Bcrypt(app)
+login_manager = LoginManager(app)
 
 from app import routes, models
