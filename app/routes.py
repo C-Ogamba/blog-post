@@ -1,4 +1,3 @@
-from fileinput import filename
 from flask import render_template, url_for, flash, redirect, request
 from app import app, db, bcrypt 
 from app.models import User, Post
@@ -48,9 +47,18 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-@app.route('/account')
+@app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
     form = UpdateAccountForm()
+    if form.validate_on_submit():
+        current_user.username = form.username.data
+        current_user.email = form.email.data
+        db.session.commit()
+        flash('Your account has been updated!', 'success')
+        return redirect(url_for('account'))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.email.data = current_user.email
     image_file = url_for('static', filename='proile_pics/' + current_user.image_file)
     return render_template('account.html', title='Login', image_file=image_file, form=form)
