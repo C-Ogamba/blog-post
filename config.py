@@ -7,3 +7,4 @@ class Config(object):
     Common configurations
     """
     SECRET_KEY = os.getenv('SECRET_KEY')
+    SQLACHEMY_TRACK_MODIFICATIONS = False
