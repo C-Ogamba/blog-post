@@ -92,4 +92,4 @@ def account():
 @app.route('/post/new')
 @login_required
 def new_post():
-    return render_template('account.html', title='Account')
+    return render_template('create_post.html', title='New post')
