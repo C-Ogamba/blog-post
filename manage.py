@@ -1,10 +1,7 @@
-from app import create_app, db
-from app.models import User, Pitch
+from flask import Flask
 
+app = Flask(__name__)
 
-app = create_app()
-
-
-@app.shell_context_processor
-def make_shell_context():
-    return dict(db=db, User=User, Pitch=Pitch)
+@app.route('/')
+def hello():
+    return 'Hello World'
