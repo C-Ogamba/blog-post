@@ -63,3 +63,9 @@ a.article-title:hover{
 .account-heading{
     font-size: 2.5rem;
 }
+.uno{
+    font-family: 'Grape Nuts', cursive;
+    text-decoration-line: overline;
+    text-decoration-color: rgb(7, 3, 70);
+    color: black;
+}
