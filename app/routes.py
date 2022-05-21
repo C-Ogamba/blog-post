@@ -1,5 +1,6 @@
 import os
 import secrets
+from turtle import title
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request
 from app import app, db, bcrypt 
@@ -12,11 +13,12 @@ from flask_login import login_user, current_user, logout_user, login_required
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html')
+    posts = Post.query.all()
+    return render_template('index.html', posts=posts)
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html', title='About')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -93,6 +95,9 @@ def account():
 def new_post():
     form = PostForm()
     if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
         flash('Your post has been created!', 'success')
         return redirect(url_for('index'))
     return render_template('create_post.html', title='New post', form=form)
