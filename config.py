@@ -11,3 +11,10 @@ class Config(object):
         'postgres://', 'postgresql://') or\
         'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLACHEMY_TRACK_MODIFICATIONS = False
+
+    #Pagination
+    POSTS_PER_PAGE = int(os.environ.get('POSTS_PER_PAGE') or 10)
+
+    #Heroku logs
+    LOG_TO_STDOUT = os.environ.get('LOG_TO_STDOUT')
+    
