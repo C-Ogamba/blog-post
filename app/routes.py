@@ -88,7 +88,7 @@ def account():
         form.username.data = current_user.username
         form.email.data = current_user.email
     image_file = url_for('static', filename='proile_pics/' + current_user.image_file)
-    return render_template('account.html', title='Login', image_file=image_file, form=form)
+    return render_template('account.html', title='Account', image_file=image_file, form=form)
 
 @app.route('/post/new', methods=['GET', 'POST'])
 @login_required
